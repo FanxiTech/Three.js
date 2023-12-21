@@ -3,9 +3,7 @@ import { useUserStore, useCanvasStore } from "@/redux/zustand";
 import React, { useEffect, useState, useRef, Suspense } from "react";
 import { useThree, useLoader, useFrame, useUpdate } from "@react-three/fiber";
 import * as THREE from "three";
-import { Button } from "@/ui/atoms";
 import useOutsideClick from "@/hooks/useOutsideClick";
-import { twMerge } from "tailwind-merge";
 
 import { getPathWallet } from "@/utils";
 
@@ -127,58 +125,6 @@ function MeetingRoom() {
   );
 }
 
-const ColorChoose = ({ color, setColor }) => {
-  return (
-    <div className="flex items-center justify-around">
-      <div
-        onClick={() => {
-          setColor("#FFFFFF");
-        }}
-        className={twMerge(
-          "bg-white rounded-full cursor-pointer p-3 my-4 w-[15px] h-[15px]",
-          color === "#FFFFFF" ? "border-2 border-white border-solid" : ""
-        )}
-      />
-      <div
-        onClick={() => {
-          setColor("#000000");
-        }}
-        className={twMerge(
-          "bg-black rounded-full cursor-pointer p-3 my-4 w-[15px] h-[15px]",
-          color === "#000000" ? "border-2 border-white border-solid" : ""
-        )}
-      />
-      <div
-        onClick={() => {
-          setColor("#f87171");
-        }}
-        className={twMerge(
-          "bg-red-400 rounded-full cursor-pointer p-3 my-4 w-[15px] h-[15px]",
-          color === "#f87171" ? "border-2 border-white border-solid" : ""
-        )}
-      />
-      <div
-        onClick={() => {
-          setColor("#FACC15");
-        }}
-        className={twMerge(
-          "bg-yellow-400 rounded-full cursor-pointer p-3 my-4 w-[15px] h-[15px]",
-          color === "#FACC15" ? "border-2 border-white border-solid" : ""
-        )}
-      />
-      <div
-        onClick={() => {
-          setColor("#4ADE80");
-        }}
-        className={twMerge(
-          "bg-green-400 rounded-full cursor-pointer p-3 my-4 w-[15px] h-[15px]",
-          color === "#4ADE80" ? "border-2 border-white border-solid" : ""
-        )}
-      />
-    </div>
-  );
-};
-
 const AddTag = ({ point, setPoint, scale, rotation, look }) => {
   const [color, setColor] = useState("#FFFFFF");
   const [tag, setTag] = useState("");
@@ -203,70 +149,6 @@ const AddTag = ({ point, setPoint, scale, rotation, look }) => {
         <meshMatcapMaterial />
       </mesh>
     </>
-  );
-};
-
-const EditTag = ({
-  editMenu,
-  canMoveRef,
-  setEditMenu,
-  edit3Dtags,
-  delete3Dtags,
-}) => {
-  const editMenuRef = useOutsideClick(() => setEditMenu(null));
-  const inputNameRef = useRef();
-  const inputUrlRef = useRef();
-  const [color, setColor] = useState(editMenu.color);
-  console.log("editMenu", editMenu);
-  return (
-    <Html
-      ref={editMenuRef}
-      rotation={[0, Math.PI, 0]}
-      position={editMenu.position}
-    >
-      <div className="bg-gray-700 text-white -translate-x-1/2 mt-12 p-4 rounded-lg">
-        <input
-          className=" bg-transparent w-full mb-4 text-[14px]"
-          placeholder="輸入名稱"
-          defaultValue={editMenu.name}
-          ref={inputNameRef}
-        />
-        <input
-          className=" bg-transparent w-full mb-4 text-[14px]"
-          placeholder="輸入Url"
-          defaultValue={editMenu.url}
-          ref={inputUrlRef}
-        />
-        <ColorChoose color={color} setColor={setColor} />
-        <div className="flex items-center justify-center">
-          <Button
-            className="mx-2 whitespace-nowrap"
-            onClick={() => {
-              canMoveRef.current = true;
-              delete3Dtags(editMenu);
-              setEditMenu(null);
-            }}
-          >
-            刪除
-          </Button>
-          <Button
-            className="mx-2 whitespace-nowrap"
-            onClick={() => {
-              edit3Dtags({
-                ...editMenu,
-                color,
-                name: inputNameRef.current.value,
-                url: inputUrlRef.current.value,
-              });
-              setEditMenu(null);
-              canMoveRef.current = true;
-            }}
-          >
-            更新
-          </Button>
-        </div>
-      </div>
-    </Html>
   );
 };
 

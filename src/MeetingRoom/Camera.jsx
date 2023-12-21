@@ -43,11 +43,6 @@ function CameraMover() {
       args={[camera, gl.domElement]}
       minZoom={1}
       target={[-5, 3, 0]} // camera位置
-      // minPolarAngle={type === "normal" ? Math.PI / 3 : 0} // 设置一个非常小的值
-      // maxPolarAngle={type === "normal" ? Math.PI * 0.65 : Math.PI}
-      // maxAzimuthAngle={type === "normal" ? Math.PI * 2 : undefined}
-      // minAzimuthAngle={type === "normal" ? -Math.PI : undefined}
-      // enableZoom={false}
       rotateSpeed={-1}
     />
   );
