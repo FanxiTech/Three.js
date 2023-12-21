@@ -1,0 +1,56 @@
+.login_btn_round{
+    box-shadow: rgb(189, 255, 241) 0px 0px 30px 0px, rgb(189, 255, 241) 0px 0px 20px 0px inset
+}
+
+.text_btn_round{
+    text-shadow: 0 0 10px #3bdbe7, 0 0 20px #3bdbe7, 0 0 20px #3bdbe7, 0 0 30px #3bdbe7;
+    color: #96f9ff;
+}
+.outer_circle{
+    border: 1px solid #3dce95;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: all 1s ease-in-out;
+    box-shadow: rgb(0 255 200) 0px 0px 30px 0px, rgb(0 255 200) 0px 0px 20px 0px inset
+}
+.outer_circle:hover{
+    box-shadow: rgb(0 255 200) 0px 0px 50px 0px, rgb(0 255 200) 0px 0px 50px 0px inset
+}
+.outer_circle:hover .login_btn_round{
+    box-shadow: rgb(189, 255, 241) 0px 0px 100px 20px, rgb(189, 255, 241) 0px 0px 100px 0px inset
+}
+.turn{
+    animation: turn 2s infinite linear;
+}
+
+@keyframes turn {
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+}
+
+.line {
+    width: 2px;
+    height: 1px;
+    background-color: #3dce95;
+    animation: lineAnimation 1s ease-out infinite;
+  }
+  
+  @keyframes lineAnimation {
+    0% {
+        height: 0;
+        transform: translate3D(-50%, -50%, -10px);
+      }
+      50% {
+        height: 50px;
+        transform: translate3D(-50%, -50%, 0) rotateX(0);
+      }
+      100% {
+        height: 50px;
+        transform: translate3D(-50%, -50%, 0) rotateX(0);
+      }
+  }

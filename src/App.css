@@ -1,0 +1,73 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-weight: 400;
+  color: #fff;
+  text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+body{
+  line-height: 1rem;
+  overscroll-behavior-y: contain;
+}
+textarea {
+  resize: none;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.gradient-border {
+    --borderWidth: 3px;
+    background: #1D1F20;
+    position: relative;
+    border-radius: var(--borderWidth);
+  }
+  .gradient-border:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + 10px);
+    background: linear-gradient(60deg,  #b425ce, #1098ad, #07b39b, #6fba82);
+    box-shadow: #30fcfe 0 0 10px 3px;
+    border-radius: calc(2 * var(--borderWidth));
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite , animatedShadow 1.3s ease-in-out infinite;
+    background-size: 300% 300%;
+  }
+  
+  
+  @keyframes animatedgradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+  @keyframes animatedShadow {
+      0% {
+          box-shadow: #30fcfe 0 0 10px 3px;
+      }
+      50% {
+          box-shadow: #30fcfe 0 0 20px 3px;
+      }
+      100% {
+          box-shadow: #30fcfe 0 0 10px 3px;
+      }
+  }
+  
+  
+  
